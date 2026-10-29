@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Top | With Our Love</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,400&family=Noto+Serif+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body class="navy">
+<canvas id="sparkle"></canvas>
+<div id="opening" role="dialog" aria-label="オープニング">
+  <div class="intro"><p class="nm">藤原 幸士 <span>&amp;</span> 篠崎 美耶</p><p class="dt">2035 . 11 . 22</p></div>
+  <div class="light"></div><div class="seam"></div>
+  <div class="stage">
+    <div class="door l"><span class="panel p1"></span><span class="panel p2"></span><span class="knob"></span></div>
+    <div class="door r"><span class="panel p1"></span><span class="panel p2"></span><span class="knob"></span></div>
+  </div>
+  <div class="c"><p class="t">With Our Love</p><p class="s">扉をタップして、はじめましょう</p>
+    <button id="openBtn" type="button">OPEN</button></div>
+</div>
+<main class="book">
+<div class="frame">
+  <section class="hero hero-in">
+    <p class="en">With Our Love</p>
+    <p class="sub">2人のプロフィールブック</p>
+    <p class="names">藤原 幸士 <span>&amp;</span> 篠崎 美耶</p>
+    <p class="date">2035 . 11 . 22 &nbsp; THE GARDEN HOTEL · TOKYO</p>
+    <div class="orn"><i></i></div>
+  </section>
+  <p class="lead rv">ページをひらいて、2人の物語へ。</p>
+  <ul class="menu-list">
+<li class="rv"><a href="message.html"><span class="ic">♡</span><span><span class="tt">Message</span><span class="ds">ごあいさつ</span></span><span class="ar">→</span></a></li>
+<li class="rv"><a href="profile.html"><span class="ic">I</span><span><span class="tt">Profile</span><span class="ds">2人のプロフィール</span></span><span class="ar">→</span></a></li>
+<li class="rv"><a href="story.html"><span class="ic">II</span><span><span class="tt">Story</span><span class="ds">2人の歩み</span></span><span class="ar">→</span></a></li>
+<li class="rv"><a href="timeline.html"><span class="ic">III</span><span><span class="tt">Wedding Day</span><span class="ds">本日のタイムテーブル</span></span><span class="ar">→</span></a></li>
+<li class="rv"><a href="menu.html"><span class="ic">IV</span><span><span class="tt">Menu</span><span class="ds">本日のお料理</span></span><span class="ar">→</span></a></li>
+<li class="rv"><a href="drink.html"><span class="ic">V</span><span><span class="tt">Drink Menu</span><span class="ds">本日のお飲み物</span></span><span class="ar">→</span></a></li>
+<li class="rv"><a href="seating.html"><span class="ic">VI</span><span><span class="tt">Setting Plan</span><span class="ds">披露宴 席次のご案内</span></span><span class="ar">→</span></a></li>
+  </ul>
+  <button class="cheer rv" id="cheer" type="button">Cheers!</button>
+  <p class="closing rv">Thank you for being part of our story.</p>
+</div>
+</main>
+<script>
+(function(){
+  const op=document.getElementById('opening'),b=document.body;
+  const done=()=>b.classList.add('opened');
+  if(sessionStorage.getItem('wol-opened')){op.remove();done();return}
+  b.classList.add('locked');
+  let started=false,ready=false;
+  setTimeout(()=>{op.classList.add('ready');ready=true},3000);   /* 名前を3秒表示 → 扉へ */
+  const start=()=>{
+    if(started||!ready)return;started=true;sessionStorage.setItem('wol-opened','1');
+    op.classList.add('knock');                       /* ドキドキ：約1.5秒 */
+    setTimeout(()=>{op.classList.add('open');window.burst&&burst(innerWidth/2,innerHeight/2)},1500);
+    setTimeout(()=>{b.classList.remove('locked');done();op.classList.add('fade')},2300);
+    setTimeout(()=>{window.burst&&burst(innerWidth/2,innerHeight*.4)},2500);
+    setTimeout(()=>op.remove(),4200);
+  };
+  document.getElementById('openBtn').addEventListener('click',start);
+  op.querySelector('.stage').style.pointerEvents='none';
+  op.addEventListener('click',start);               /* 扉のどこをタップしても開く */
+  document.getElementById('cheer').addEventListener('click',e=>{window.burst&&burst(e.clientX,e.clientY)});
+})();
+</script>
+<script src="js/main.js"></script>
+</body>
+</html>

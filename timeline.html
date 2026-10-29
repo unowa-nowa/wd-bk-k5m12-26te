@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Wedding Day | With Our Love</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,400&family=Noto+Serif+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<canvas id="sparkle"></canvas>
+<main class="book">
+<div class="frame">
+  <header class="head rv"><h1 class="en">Wedding Day</h1><p class="ja">本日のタイムテーブル</p></header>
+  <div class="daybar rv"><p class="d">2035.11.22 / SUNDAY</p><p class="p">THE GARDEN HOTEL · TOKYO</p></div>
+  <ol class="sch">
+<li class="rv" data-t="10:30"><span class="tm">10:30</span><div class="bd"><p class="tt"><span>受付</span><em>WELCOME</em></p><p class="ds">ウェルカムドリンクをお楽しみください</p></div></li>
+<li class="rv" data-t="11:00"><span class="tm">11:00</span><div class="bd"><p class="tt"><span>挙式</span><em>CEREMONY</em></p><p class="ds">大切な皆さまの前で 誓いを交わします</p></div></li>
+<li class="rv" data-t="11:30"><span class="tm">11:30</span><div class="bd"><p class="tt"><span>集合写真</span><em>PHOTO TIME</em></p><p class="ds">笑顔あふれる一枚をご一緒に</p></div></li>
+<li class="rv" data-t="12:30"><span class="tm">12:30</span><div class="bd"><p class="tt"><span>披露宴 開宴</span><em>RECEPTION</em></p><p class="ds">新郎新婦入場・ウェルカムスピーチ</p></div></li>
+<li class="rv" data-t="12:40"><span class="tm">12:40</span><div class="bd"><p class="tt"><span>乾杯・お食事</span><em>CHEERS &amp; DINING</em></p><p class="ds">季節のお料理とご歓談のひとときを</p></div></li>
+<li class="rv" data-t="13:00"><span class="tm">13:00</span><div class="bd"><p class="tt"><span>お色直し中座</span><em>INTERLUDE</em></p><p class="ds">二人の歩みを映像でご紹介します</p></div></li>
+<li class="rv" data-t="13:30"><span class="tm">13:30</span><div class="bd"><p class="tt"><span>再入場・テーブルラウンド</span><em>CELEB</em></p><p class="ds">皆さまのお席へ ご挨拶に伺います</p></div></li>
+<li class="rv" data-t="14:30"><span class="tm">14:30</span><div class="bd"><p class="tt"><span>感謝のことば</span><em>WITH GRATITUDE</em></p><p class="ds">家族への手紙・記念品贈呈・謝辞</p></div></li>
+<li class="rv" data-t="14:45"><span class="tm">14:45</span><div class="bd"><p class="tt"><span>おひらき・お見送り</span><em>FAREWELL</em></p><p class="ds">感謝の気持ちを込めてお見送りします</p></div></li>
+  </ol>
+
+</div>
+<nav class="pager" id="pager"></nav>
+</main>
+<script src="js/main.js"></script>
+<script>
+/* 挙式当日（2035/11/22）だけ、いまの進行に「NOW」を表示 */
+(function(){
+  const n=new Date();if(n.getFullYear()!==2035||n.getMonth()!==10||n.getDate()!==22)return;
+  const m=n.getHours()*60+n.getMinutes(),li=[...document.querySelectorAll('.sch li')];
+  const t=li.map(l=>{const[h,mi]=l.dataset.t.split(':');return h*60+ +mi});
+  let k=-1;t.forEach((v,i)=>{if(m>=v)k=i});if(k>=0&&k<li.length-1)li[k].classList.add('now');
+})();
+</script>
+</body>
+</html>
