@@ -87,7 +87,8 @@ body.navy .closing{font-size:1.25rem}
 .tag{display:block;width:100%;background:var(--navy);color:var(--gold-soft);text-align:center;border-radius:99px;
   font-family:var(--en);font-size:1rem;letter-spacing:.2em;padding:2px 0;margin:26px 0 18px}
 .person{display:flex;gap:18px;align-items:center;margin-bottom:18px}
-.person.rev{flex-direction:row-reverse;text-align:right}
+.person.rev{flex-direction:row-reverse}
+.person>div:not(.photo){flex:1;text-align:center}
 .photo{flex:none;width:118px;height:118px;border-radius:50%;background:#d6d6d6;overflow:hidden;
   border:2px solid #fff;box-shadow:0 0 0 1px var(--gold-soft);transition:transform .5s}
 .photo:hover{transform:scale(1.06) rotate(-2deg)}
