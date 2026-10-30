@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex,nofollow">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Menu | With Our Love</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,400&family=Noto+Serif+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<style>body{animation:none}</style>
+</head>
+<body class="navy">
+<div id="lightin" style="position:fixed;inset:0;z-index:200;background:radial-gradient(circle at 50% 50%,#fffef8,#fff6d8 40%,#f6e4ae);opacity:0;pointer-events:none;transition:opacity 1.3s ease"></div>
+<script>
+(function(){var l=document.getElementById('lightin');try{if(sessionStorage.getItem('wol-light')){sessionStorage.removeItem('wol-light');l.style.opacity=1;l.style.transition='none';document.documentElement.style.background='#fff8e6';requestAnimationFrame(function(){requestAnimationFrame(function(){l.style.transition='opacity .8s ease';l.style.opacity=0})})}}catch(e){}})();
+</script>
+<canvas id="sparkle"></canvas>
+<main class="book">
+<div class="frame">
+  <section class="hero hero-in">
+    <p class="en">With Our Love</p>
+    <p class="sub">2人のプロフィールブック</p>
+    <p class="names">藤原 幸士 <span>&amp;</span> 篠崎 美耶</p>
+    <p class="date">2035 . 11 . 22 &nbsp; THE GARDEN HOTEL · TOKYO</p>
+    <div class="orn"><i></i></div>
+  </section>
+  <p class="lead rv">ページをひらいて、2人の物語へ。</p>
+  <ul class="menu-list">
+<li class="rv"><a href="message.html"><span class="ic">♡</span><span><span class="tt">Message</span><span class="ds">ごあいさつ</span></span><span class="ar">→</span></a></li>
+<li class="rv"><a href="profile.html"><span class="ic">I</span><span><span class="tt">Profile</span><span class="ds">2人のプロフィール</span></span><span class="ar">→</span></a></li>
+<li class="rv"><a href="story.html"><span class="ic">II</span><span><span class="tt">Story</span><span class="ds">2人の歩み</span></span><span class="ar">→</span></a></li>
+<li class="rv"><a href="timeline.html"><span class="ic">III</span><span><span class="tt">Wedding Day</span><span class="ds">本日のタイムテーブル</span></span><span class="ar">→</span></a></li>
+<li class="rv"><a href="menu.html"><span class="ic">IV</span><span><span class="tt">Menu</span><span class="ds">本日のお料理</span></span><span class="ar">→</span></a></li>
+<li class="rv"><a href="drink.html"><span class="ic">V</span><span><span class="tt">Drink Menu</span><span class="ds">本日のお飲み物</span></span><span class="ar">→</span></a></li>
+<li class="rv"><a href="seating.html"><span class="ic">VI</span><span><span class="tt">Setting Plan</span><span class="ds">披露宴 席次のご案内</span></span><span class="ar">→</span></a></li>
+  </ul>
+  <button class="cheer rv" id="cheer" type="button">Cheers!</button>
+  <p class="closing rv">Thank you for being part of our story.</p>
+</div>
+</main>
+<script>
+(function(){
+  document.body.classList.add('opened');
+  document.getElementById('cheer').addEventListener('click',e=>{window.burst&&burst(e.clientX,e.clientY)});
+})();
+</script>
+<script src="js/main.js"></script>
+</body>
+</html>

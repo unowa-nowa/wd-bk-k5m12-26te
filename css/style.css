@@ -68,49 +68,6 @@ body.navy .head .en{color:var(--gold-soft)}
   font-family:var(--en);font-size:1.1rem;letter-spacing:.2em;padding:10px 26px;cursor:pointer;transition:.3s}
 .cheer:hover{background:var(--gold);color:var(--navy)}
 
-#opening{position:fixed;inset:0;z-index:100;background:transparent;transition:visibility 0s 3s;overflow:hidden}
-#opening .light{position:absolute;inset:0;z-index:1;opacity:0;
-  background:radial-gradient(ellipse 60% 70% at 50% 50%,#fff8e0 0%,#f1dca0 30%,rgba(217,194,143,.55) 55%,rgba(20,39,74,0) 80%);transition:opacity .5s}
-#opening .seam{position:absolute;left:50%;top:0;height:100%;width:2px;margin-left:-1px;z-index:2;
-  background:linear-gradient(transparent,#fff3c4 15%,#fff 50%,#fff3c4 85%,transparent);opacity:0;filter:blur(.5px);transition:width 1.4s ease-in,margin 1.4s ease-in,opacity .6s}
-#opening .stage{position:absolute;inset:0;z-index:3;perspective:1400px;pointer-events:none}
-#opening .door{position:absolute;top:0;width:50%;height:100%;background:linear-gradient(180deg,#0f1f3c,#14274a 45%,#0d1b36);
-  box-shadow:inset 0 0 60px rgba(0,0,0,.45);transition:transform 2.2s cubic-bezier(.55,0,.15,1),filter 2.2s;backface-visibility:hidden}
-#opening .door.l{left:0;transform-origin:0 50%}#opening .door.r{right:0;transform-origin:100% 50%}
-#opening .door::before{content:"";position:absolute;inset:14px;border:1px solid var(--gold);pointer-events:none}
-#opening .door.l::before{border-right-color:transparent}#opening .door.r::before{border-left-color:transparent}
-#opening .panel{position:absolute;left:12%;right:12%;border:1px solid rgba(184,150,79,.65);box-shadow:inset 0 0 0 5px rgba(20,39,74,1),inset 0 0 0 6px rgba(184,150,79,.3)}
-#opening .panel.p1{top:9%;height:46%}#opening .panel.p2{top:60%;height:30%}
-#opening .door.l .panel{right:6%}#opening .door.r .panel{left:6%}
-#opening .knob{position:absolute;top:52%;width:16px;height:16px;border-radius:50%;
-  background:radial-gradient(circle at 35% 30%,#fff3c4,#b8964f 60%,#7c6125);box-shadow:0 0 0 3px rgba(184,150,79,.25),0 2px 6px rgba(0,0,0,.5)}
-#opening .door.l .knob{right:22px}#opening .door.r .knob{left:22px}
-#opening .c{position:absolute;left:0;right:0;top:50%;transform:translateY(-50%);z-index:4;text-align:center;color:var(--gold-soft);transition:opacity .5s}
-#opening .c .t{font-family:var(--en);font-size:2.6rem;font-weight:300;letter-spacing:.05em;text-shadow:0 0 18px rgba(13,27,54,.9)}
-#opening .c .s{font-size:.78rem;letter-spacing:.3em;margin:8px 0 34px;color:#e8e3d3;text-shadow:0 0 12px rgba(13,27,54,.9)}
-#opening button{background:rgba(13,27,54,.85);color:var(--gold-soft);border:1px solid var(--gold);padding:13px 38px;font-family:var(--en);
-  font-size:1.15rem;letter-spacing:.3em;cursor:pointer;animation:pulse 2s infinite}
-#opening .hint{display:block;font-size:.66rem;letter-spacing:.2em;margin-top:14px;color:#cfc9b8;text-shadow:0 0 10px #0d1b36}
-@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(184,150,79,.55)}50%{box-shadow:0 0 0 12px rgba(184,150,79,0)}}
-#opening .intro{position:absolute;inset:0;z-index:6;background:var(--navy-deep);display:flex;flex-direction:column;align-items:center;justify-content:center;
-  color:#fff;text-align:center;transition:opacity 1.2s ease;pointer-events:auto}
-#opening .intro .nm{font-size:1.5rem;letter-spacing:.24em;opacity:0;animation:nm 1.6s ease .3s forwards}
-#opening .intro .nm span{font-family:var(--en);font-style:italic;color:var(--gold);margin:0 .5em}
-#opening .intro .dt{font-family:var(--en);letter-spacing:.3em;color:var(--gold-soft);margin-top:18px;font-size:.95rem;opacity:0;animation:nm 1.6s ease 1s forwards}
-@keyframes nm{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
-#opening.ready .intro{opacity:0;pointer-events:none}
-#opening:not(.ready) .c,#opening:not(.ready) .stage{visibility:hidden}
-/* 1) ドキドキ：扉が鼓動し、隙間から光がもれる */
-#opening.knock .c{opacity:0}
-#opening.knock .seam{opacity:1;width:14px;margin-left:-7px}
-#opening.knock .light{opacity:.35;transition:opacity 1.4s ease-in}
-/* 2) 開扉 */
-#opening.open .light{opacity:1;transition:opacity .6s}
-#opening.open .seam{width:100vw;margin-left:-50vw;opacity:0;transition:width 1s,margin 1s,opacity 1.2s .3s}
-#opening.open .door.l{transform:rotateY(-112deg);filter:brightness(.55)}
-#opening.open .door.r{transform:rotateY(112deg);filter:brightness(.55)}
-#opening.fade .light{opacity:0;transition:opacity 1.2s}
-#opening.done{visibility:hidden;pointer-events:none}
 body.locked{overflow:hidden}
 .hero-in>*{opacity:0;transform:translateY(16px)}
 body.opened .hero-in>*{animation:rise 1s ease forwards}
@@ -206,4 +163,4 @@ body.navy .closing{font-size:1.25rem}
 .tbl.dim{opacity:.4}
 
 @media(min-width:700px){body{padding:20px 0}.book{min-height:auto}}
-@media(prefers-reduced-motion:reduce){#opening .door{transition:none!important}*{animation:none!important;transition:none!important}.rv,.ev,.hero-in>*{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv,.ev,.hero-in>*{opacity:1;transform:none}}

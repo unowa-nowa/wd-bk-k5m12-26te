@@ -37,7 +37,7 @@
   addEventListener('pageshow',e=>{if(e.persisted)document.body.classList.remove('leaving')});
 
   /* ページ送り（順番はここで一元管理） */
-  const order=[['index.html','Top'],['message.html','Message'],['profile.html','Profile'],['story.html','Story'],
+  const order=[['home.html','Top'],['message.html','Message'],['profile.html','Profile'],['story.html','Story'],
     ['timeline.html','Wedding Day'],['menu.html','Menu'],['drink.html','Drink Menu'],['seating.html','Setting Plan']];
   const pg=document.getElementById('pager');
   if(pg){
@@ -45,9 +45,9 @@
     const i=order.findIndex(o=>o[0]===cur);
     if(i>0){
       const p=order[i-1],n=order[i+1];
-      pg.innerHTML=`<a href="${p[0]}">← ${p[1]}</a><a class="home" href="index.html">Top</a>${n?`<a href="${n[0]}">${n[1]} →</a>`:`<a href="index.html">Close</a>`}`;
+      pg.innerHTML=`<a href="${p[0]}">← ${p[1]}</a><a class="home" href="home.html">Top</a>${n?`<a href="${n[0]}">${n[1]} →</a>`:`<a href="home.html">Close</a>`}`;
       /* 画面右上に常時表示のメニューボタン */
-      const f=document.createElement('a');f.className='float-menu';f.href='index.html';f.textContent='☰ MENU';f.setAttribute('aria-label','メニューへ戻る');
+      const f=document.createElement('a');f.className='float-menu';f.href='home.html';f.textContent='☰ MENU';f.setAttribute('aria-label','メニューへ戻る');
       document.body.appendChild(f);
       document.querySelectorAll('.pager a,.float-menu').forEach(go);
     }
