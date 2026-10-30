@@ -32,14 +32,5 @@
 <nav class="pager" id="pager"></nav>
 </main>
 <script src="js/main.js"></script>
-<script>
-/* 挙式当日（2035/11/22）だけ、いまの進行に「NOW」を表示 */
-(function(){
-  const n=new Date();if(n.getFullYear()!==2035||n.getMonth()!==10||n.getDate()!==22)return;
-  const m=n.getHours()*60+n.getMinutes(),li=[...document.querySelectorAll('.sch li')];
-  const t=li.map(l=>{const[h,mi]=l.dataset.t.split(':');return h*60+ +mi});
-  let k=-1;t.forEach((v,i)=>{if(m>=v)k=i});if(k>=0&&k<li.length-1)li[k].classList.add('now');
-})();
-</script>
 </body>
 </html>

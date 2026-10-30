@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="robots" content="noindex,nofollow">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Setting Plan | With Our Love</title>
+<title>Seating Plan | With Our Love</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,400&family=Noto+Serif+JP:wght@400;500;700&display=swap" rel="stylesheet">
@@ -14,7 +14,7 @@
 <canvas id="sparkle"></canvas>
 <main class="book">
 <div class="frame">
-  <header class="head rv"><h1 class="en">Setting Plan</h1><p class="ja">披露宴 席次のご案内</p></header>
+  <header class="head rv"><h1 class="en">Seating Plan</h1><p class="ja">披露宴 席次のご案内</p></header>
   <div class="main-tbl rv"><small>MAIN TABLE</small><p class="nn"><span>藤原 幸士</span><span>篠崎 美耶</span></p></div>
   <div class="main-lb"><span>新郎側</span><span>高砂に向かって</span><span>新婦側</span></div>
   <div class="map rv"><button type="button" data-t="C" style="left:20%;top:24px" aria-label="C卓">C</button><button type="button" data-t="A" style="left:36%;top:24px" aria-label="A卓">A</button><button type="button" data-t="B" style="left:64%;top:24px" aria-label="B卓">B</button><button type="button" data-t="D" style="left:80%;top:24px" aria-label="D卓">D</button><button type="button" data-t="E" style="left:30%;top:98px" aria-label="E卓">E</button><button type="button" data-t="F" style="left:70%;top:98px" aria-label="F卓">F</button><button type="button" data-t="G" style="left:20%;top:150px" aria-label="G卓">G</button><button type="button" data-t="H" style="left:80%;top:150px" aria-label="H卓">H</button><p class="ent">入口</p></div>
@@ -28,36 +28,10 @@
 <section class="tbl rv" id="tF" data-t="F"><h3><b>F</b><span>新婦 友人</span></h3><ul><li data-n="岡野一香">岡野 一香 様</li><li data-n="加藤優衣">加藤 優衣 様</li><li data-n="中村彩">中村 彩 様</li><li data-n="山田遥">山田 遥 様</li><li data-n="松本里奈">松本 里奈 様</li><li data-n="井上結花">井上 結花 様</li></ul></section>
 <section class="tbl rv" id="tG" data-t="G"><h3><b>G</b><span>新郎 家族</span></h3><ul><li data-n="藤原修">藤原 修</li><li data-n="藤原和子">藤原 和子</li><li data-n="藤原直樹">藤原 直樹</li><li data-n="藤原葵">藤原 葵</li><li data-n="藤原正人">藤原 正人</li><li data-n="藤原恵子">藤原 恵子</li></ul></section>
 <section class="tbl rv" id="tH" data-t="H"><h3><b>H</b><span>新婦 家族</span></h3><ul><li data-n="篠崎明">篠崎 明</li><li data-n="篠崎幸子">篠崎 幸子</li><li data-n="篠崎翔太">篠崎 翔太</li><li data-n="篠崎奈緒">篠崎 奈緒</li><li data-n="篠崎健一">篠崎 健一</li><li data-n="篠崎由美">篠崎 由美</li></ul></section>
-  <p class="foot-note rv">家族の敬称は省略させていただいております</p>
-
+<p class="foot-note rv">家族の敬称は省略させていただいております</p>
 </div>
 <nav class="pager" id="pager"></nav>
 </main>
 <script src="js/main.js"></script>
-<script>
-(function(){
-  const tbls=[...document.querySelectorAll('.tbl')],btns=[...document.querySelectorAll('.map button')];
-  const flash=(el)=>{el.classList.add('flash');setTimeout(()=>el.classList.remove('flash'),1800)};
-  btns.forEach(b=>b.addEventListener('click',()=>{
-    const t=document.getElementById('t'+b.dataset.t);t.scrollIntoView({behavior:'smooth',block:'start'});flash(t);
-    btns.forEach(x=>x.classList.toggle('on',x===b));window.burst&&burst(b.getBoundingClientRect().left+19,b.getBoundingClientRect().top+19);
-  }));
-  const q=document.getElementById('q'),res=document.getElementById('res');
-  q.addEventListener('input',()=>{
-    const v=q.value.replace(/\s|　/g,'');
-    tbls.forEach(t=>{t.classList.remove('dim');t.querySelectorAll('li').forEach(l=>l.classList.remove('hit'))});
-    btns.forEach(b=>b.classList.remove('on'));
-    if(!v){res.textContent='';return}
-    const hits=[];
-    tbls.forEach(t=>t.querySelectorAll('li').forEach(l=>{if(l.dataset.n.includes(v)){l.classList.add('hit');hits.push([t,l])}}));
-    tbls.forEach(t=>{if(!hits.some(h=>h[0]===t))t.classList.add('dim')});
-    if(!hits.length){res.textContent='見つかりませんでした。スタッフへお尋ねください。';return}
-    const ks=[...new Set(hits.map(h=>h[0].dataset.t))];
-    res.textContent=hits.length===1?`${hits[0][1].dataset.n.replace(/(.{2})/,'$1 ')} 様は ${ks[0]} 卓です`:`${hits.length}件：${ks.join('・')} 卓`;
-    hits[0][0].scrollIntoView({behavior:'smooth',block:'center'});flash(hits[0][0]);
-    btns.forEach(b=>b.classList.toggle('on',ks.includes(b.dataset.t)));
-  });
-})();
-</script>
 </body>
 </html>
